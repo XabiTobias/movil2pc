@@ -178,11 +178,45 @@ def convertirHEIC():
         stream = os.popen('"C:\\Program Files\\ImageMagick-7.0.11-Q16-HDRI\\magick" ' + fotoOriginal + ' ' + fotoR)
         output = stream.read()
 
+def insertarLog(textoLog):
+  file = open("log\\log.txt", "a")
+  file.write(textoLog + os.linesep)
+  file.close()        
+
 
 if __name__ == '__main__':
   gestionarBD = gestionBD()
   gestionarBD.crearBD()
   gravJson()
+  makedirs("log/", exist_ok=True)
+  file = open("log\\log.txt", "w")
+
+  gestionarBD = gestionBD()
+  #Sacar extensiones de fotos y videos seleccionadas por el usuario 
+  print(gestionarBD.extensionesFotoVid('foto'))
+  print(gestionarBD.extensionesFotoVid('video'))
+
+  #Sacamos el tipo de movimiento, copiar o mover
+  for ele_ext in gestionarBD.obtenerDato('OPCIONES_USUARIO','TIPO_MOVIMIENTO'):
+    for ele_ext2 in ele_ext:
+      tipoMovimiento = ele_ext2 
+  #Sacamos la ruta destino de las fotos
+  for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','RUTA_DESTINO'):
+    for ele_rutaD2 in ele_rutaD:
+      elDestinoR = ele_rutaD2 
+
+  with open('ficherosaTratar.json') as file:
+    data = json.load(file)
+    for elemento in data['ficheros']:
+      elFicheroCompleto = elemento['ruta'] + '\\' + elemento['nombre']
+      #elDestino = 'fotosNuevasXabi'
+      makedirs(elDestinoR, exist_ok=True)
+      if(tipoMovimiento =='C'): #Copiar
+        insertarLog("Fichero {} copiado en carpeta -> {}".format(elemento['nombre'],elDestinoR))
+        shutil.copy2(elFicheroCompleto, elDestinoR)
+      elif(tipoMovimiento=='M'): # Mover
+        insertarLog("Fichero {} movido a carpeta -> {}".format(elemento['nombre'],elDestinoR))   
+        shutil.move(elFicheroCompleto, elDestino, copy_function=copy2)
   '''
   with open('ficherosaTratar.json') as file:
     data = json.load(file)

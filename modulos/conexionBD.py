@@ -55,6 +55,30 @@ class gestionBD():
 		self.miCursor.execute("SELECT "+elCampo+" FROM " + laTabla)
 		return self.miCursor.fetchall()		
 
+	def extensionesFotoVid(self,tipoD):
+		if tipoD == 'foto':
+			campoConsulta = 'EXT_FOTO_ORIGEN'
+		elif tipoD == 'video':
+			campoConsulta = 'EXT_VID_ORIGEN'
+		for ele_ext in self.obtenerDato('OPCIONES_USUARIO',campoConsulta):
+			for ele_ext2 in ele_ext:
+				separador = "," 
+				listaExtFoto = ele_ext2.split(separador)  
+		listaExtFoto = tuple(listaExtFoto) 
+		return listaExtFoto
+
+
+
+
+
+
+
+
+
+
+
+
+
 	def guardarTextoBase(self,textoR,textoP):
 		self.miCursor.execute("UPDATE TEXTOSBASE SET EMAIL=?, WHATSAPP=?",(textoR,textoP))
 		self.miConexion.commit()
