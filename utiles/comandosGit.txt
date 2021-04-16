@@ -13,8 +13,12 @@ git init --bare --shared -> Una vez posicionados en la carpeta que vamos a usar,
 #Comandos para subir versiones a la nas (Desde GIT Bash)
 git remote add origin ssh://xabitsu@xabistation:/volume1/git/movil2pc -> Esta instruccion se usa una única vez para crear el el origen de la ruta remota, en este caso la nas
 
-git clone ssh://xabitsu@xabistation:/volume1/git/movil2pc -> Con esto clonamos la primera vez el contenido de local a remoto (NAS)
+git clone ssh://xabitsu@xabistation:/volume1/git/movil2pc -> Con esto clonamos el contenido que tenemos en la NAS en la ruta local donde nos encontremos
 
 git remote remove origin -> Con esto nos cargamos la ruta remota origen, por si la hemos metido mal
 
 git push -u origin master -> Con esto hacemos la subida a la nas, al origen marcado por defecto
+
+
+#Traernos a local lo del repositorio	
+git pull -> Si hacemos algun cambio en remoto y queremos traerlo a local, esta es la forma

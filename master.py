@@ -184,7 +184,7 @@ if __name__ == '__main__':
   gestionarBD.crearBD()
   gravJson()
   '''
-  with open('data.json') as file:
+  with open('ficherosaTratar.json') as file:
     data = json.load(file)
     for elemento in data['ficheros']:
       elFicheroCompleto = elemento['ruta'] + '\\' + elemento['nombre']
