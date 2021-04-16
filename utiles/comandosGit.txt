@@ -1,0 +1,20 @@
+#Pasos a seguir en ruta local (Desde GIT Bash)
+git init -> Instrucción que se lanza la primera vez que comienzas un proyecto en git
+git commit -m "Descripcion del commit" -> Hacemos un commit normal
+git commit -am "Descripcion del commit" -> Con esto hacemos el commit y el add a la vez
+git status -s -> Saber el estado de los ficheros y carpetas del repositorio
+git log --oneline -> Nos indica los distintos commits que tenemos realizados y sus codigos
+git reset --hard 506d3a4 -> Recuperamos un commit concreto pasandole el codigo de la revisión como parametro
+git commit --amend -> Abrimos el editor vim para poder modificar por ejemplo el nombre de un commit
+
+#Pasos a seguir en ruta de la NAS(Desde Putty)
+git init --bare --shared -> Una vez posicionados en la carpeta que vamos a usar, con esta instrucción habiliamos la carpeta para ser usada por git
+
+#Comandos para subir versiones a la nas (Desde GIT Bash)
+git remote add origin ssh://xabitsu@xabistation:/volume1/git/movil2pc -> Esta instruccion se usa una única vez para crear el el origen de la ruta remota, en este caso la nas
+
+git clone ssh://xabitsu@xabistation:/volume1/git/movil2pc -> Con esto clonamos la primera vez el contenido de local a remoto (NAS)
+
+git remote remove origin -> Con esto nos cargamos la ruta remota origen, por si la hemos metido mal
+
+git push -u origin master -> Con esto hacemos la subida a la nas, al origen marcado por defecto
