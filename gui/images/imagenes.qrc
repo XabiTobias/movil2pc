@@ -1,0 +1,8 @@
+<RCC>
+  <qresource prefix="imagenes">
+    <file>cerrar.png</file>
+    <file>maximizar.png</file>
+    <file>minimizar.png</file>
+    <file>minimizar2.png</file>
+  </qresource>
+</RCC>
