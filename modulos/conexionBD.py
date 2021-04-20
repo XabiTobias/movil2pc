@@ -26,7 +26,7 @@ class gestionBD():
 			EXT_FOTO_ORIGEN VARCHAR(150),
 			EXT_VID_ORIGEN VARCHAR(150),
 			RUTA_DESTINO TEXT,
-			TIPO_MOVIMIENTO VARCHAR(1),
+			TIPO_MOVIMIENTO VARCHAR(10),
 			FORMATO_SALIDA_FIC VARCHAR(50),
 			HEIC2JPG BOOLEAN)
 			''')			
@@ -53,7 +53,12 @@ class gestionBD():
 
 	def obtenerDato(self,laTabla,elCampo):
 		self.miCursor.execute("SELECT "+elCampo+" FROM " + laTabla)
-		return self.miCursor.fetchall()		
+		return self.miCursor.fetchall()	
+
+	def guardarDato(self,laTabla,elCampo,elValor):
+		#print("UPDATE " +laTabla+" SET "+elCampo+"=?",(elValor,))
+		self.miCursor.execute("UPDATE " +laTabla+" SET "+elCampo+"=?",(elValor,))
+		self.miConexion.commit()		
 
 	def extensionesFotoVid(self,tipoD):
 		if tipoD == 'foto':

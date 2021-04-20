@@ -1,4 +1,1 @@
-------------------------------------------------19/04/2021 9:51:31--------------------------------------------------
-Fichero IMG_9554.MOV copiado en carpeta -> C:\Users\Xabi\Documents\ProyectosPython\movil2pc\fotosRes/2021 - enero/Videos
-Fichero IMG_9692.HEIC copiado en carpeta -> C:\Users\Xabi\Documents\ProyectosPython\movil2pc\fotosRes/2021 - febrero/Basauri
-Fichero IMG_9831.HEIC copiado en carpeta -> C:\Users\Xabi\Documents\ProyectosPython\movil2pc\fotosRes/2021 - febrero/Bilbao
+------------------------------------------------20/04/2021 17:17:00--------------------------------------------------

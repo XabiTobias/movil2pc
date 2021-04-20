@@ -1,5 +1,15 @@
 <RCC>
   <qresource prefix="imagenes">
+    <file>guardar.png</file>
+    <file>empezarH.png</file>
+    <file>lanzarProceso.png</file>
+    <file>empezar.png</file>
+    <file>log.png</file>
+    <file>ajuEntrada.png</file>
+    <file>ajuSalida.png</file>
+    <file>btnMaximizar.png</file>
+    <file>btnMinimizar.png</file>
+    <file>btnSalir.png</file>
     <file>cerrar.png</file>
     <file>maximizar.png</file>
     <file>minimizar.png</file>
