@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>848</width>
-    <height>502</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -204,6 +204,9 @@ border-radius: 8px;</string>
        <height>41</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">image: url(:/imagenes/log.png);</string>
      </property>
@@ -288,9 +291,9 @@ border-radius: 12px;</string>
     <widget class="QLineEdit" name="extFotos">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>180</x>
        <y>20</y>
-       <width>281</width>
+       <width>300</width>
        <height>20</height>
       </rect>
      </property>
@@ -302,9 +305,9 @@ color: rgb(255, 255, 255);</string>
     <widget class="QLineEdit" name="extVideos">
      <property name="geometry">
       <rect>
-       <x>160</x>
+       <x>180</x>
        <y>50</y>
-       <width>281</width>
+       <width>300</width>
        <height>20</height>
       </rect>
      </property>
@@ -363,7 +366,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>100</y>
+       <y>110</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -385,9 +388,9 @@ color: rgb(44, 49, 60);</string>
     <widget class="QLineEdit" name="rutaOrigen">
      <property name="geometry">
       <rect>
-       <x>160</x>
-       <y>100</y>
-       <width>281</width>
+       <x>180</x>
+       <y>110</y>
+       <width>300</width>
        <height>20</height>
       </rect>
      </property>
@@ -410,6 +413,41 @@ color: rgb(255, 255, 255);</string>
      </property>
      <property name="styleSheet">
       <string notr="true">image: url(:/imagenes/guardar.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>90</y>
+       <width>460</width>
+       <height>3</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(44, 49, 60);</string>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnBuscarCOri">
+     <property name="geometry">
+      <rect>
+       <x>490</x>
+       <y>110</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/imagenes/buscarCarpeta.png);</string>
      </property>
      <property name="text">
       <string/>
@@ -439,8 +477,8 @@ border-radius: 12px;</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>40</y>
-       <width>381</width>
+       <y>20</y>
+       <width>361</width>
        <height>20</height>
       </rect>
      </property>
@@ -452,8 +490,8 @@ color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="titApp_11">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>40</y>
+       <x>20</x>
+       <y>20</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -475,8 +513,8 @@ color: rgb(44, 49, 60);</string>
     <widget class="QCheckBox" name="chkHeic">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>110</y>
+       <x>20</x>
+       <y>90</y>
        <width>171</width>
        <height>20</height>
       </rect>
@@ -497,7 +535,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>70</y>
+       <y>50</y>
        <width>101</width>
        <height>22</height>
       </rect>
@@ -520,8 +558,8 @@ color: rgb(255, 255, 255);</string>
     <widget class="QLabel" name="titApp_12">
      <property name="geometry">
       <rect>
-       <x>30</x>
-       <y>70</y>
+       <x>20</x>
+       <y>50</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -570,6 +608,25 @@ color: rgb(44, 49, 60);</string>
      </property>
      <property name="text">
       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600;&quot;&gt;Guardar cambios&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="btnBuscarCDes">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>20</y>
+       <width>21</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/imagenes/buscarCarpeta.png);</string>
+     </property>
+     <property name="text">
+      <string/>
      </property>
     </widget>
    </widget>
@@ -676,10 +733,29 @@ QPushButton#btnStart:pressed {
       <string/>
      </property>
     </widget>
+    <widget class="QPushButton" name="btnVerFotos">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>300</y>
+       <width>51</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/imagenes/verFotos.png);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
    </widget>
+   <zorder>frameOptLanzar</zorder>
    <zorder>frameOptSalida</zorder>
    <zorder>frameOptEntrada</zorder>
-   <zorder>frameOptLanzar</zorder>
    <zorder>FrameCabecera</zorder>
    <zorder>gui_labelp</zorder>
    <zorder>frameOpciones</zorder>

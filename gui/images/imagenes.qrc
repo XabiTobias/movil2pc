@@ -1,5 +1,7 @@
 <RCC>
   <qresource prefix="imagenes">
+    <file>buscarCarpeta.png</file>
+    <file>verFotos.png</file>
     <file>guardar.png</file>
     <file>empezarH.png</file>
     <file>lanzarProceso.png</file>

@@ -1,1 +1,6 @@
-------------------------------------------------20/04/2021 17:17:00--------------------------------------------------
+------------------------------------------------21/04/2021 11:14:41--------------------------------------------------
+Error en el proceso de mover archivo : [WinError 32] El proceso no tiene acceso al archivo porque está siendo utilizado por otro proceso: 'C:\\Users\\Xabi\\Documents\\ProyectosPython\\movil2pc\\fotos\\IMG_9554.MOV'
+Fichero IMG_9692.HEIC movido a carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Basauri
+Fichero IMG_9831.HEIC movido a carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Bilbao
+Convirtiendo C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Basauri\IMG_9692.HEIC en -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Basauri\IMG_9692.jpg
+Convirtiendo C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Bilbao\IMG_9831.HEIC en -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Bilbao\IMG_9831.jpg

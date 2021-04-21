@@ -27,6 +27,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 #-----------------------------------------------------------------#
 def crearCarpeta(ubi1,ubi2):
   #Sacamos la ruta destino de las fotos
+  gestionarBD = gestionBD()
   for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','RUTA_DESTINO'):
     for ele_rutaD2 in ele_rutaD:
       elDestinoR = ele_rutaD2 
@@ -35,6 +36,7 @@ def crearCarpeta(ubi1,ubi2):
   return laCarpeta
 
 def convertirHEIC():
+  gestionarBD = gestionBD()
   for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','RUTA_DESTINO'):
     for ele_rutaD2 in ele_rutaD:
       elDestinoR = ele_rutaD2 
@@ -42,17 +44,21 @@ def convertirHEIC():
   for dirpath,dirs,files in os.walk(elDestinoR):
     for file in files:
       if file.upper().endswith((".HEIC")):
-        fotoOriginal = os.path.join(dirpath, file)
+        fotoOriginal = os.path.join(dirpath, file)       
         fotoRe = file[:-5] + '.jpg'
         fotoR = os.path.join(dirpath, fotoRe)
-        print("Convirtiendo {} en -> {}".format(fotoOriginal,fotoR))
+        #print("Convirtiendo {} en -> {}".format(fotoOriginal,fotoR))
+        #Insertamos en el log el movimiento del fichero
+        textoLog = "Convirtiendo {} en -> {}".format(fotoOriginal,fotoR)
+        insertarLog(textoLog)
         stream = os.popen('"C:\\Program Files\\ImageMagick-7.0.11-Q16-HDRI\\magick" "' + fotoOriginal + '" "' + fotoR + '"')
         output = stream.read()
 
 def insertarLog(textoLog):
-  file = open("log\\log.txt", "a")
+  file = open("log\\log.txt", "a+")
   file.write(textoLog + os.linesep)
-  file.close()        
+  file.close()
+         
 #---------------------------   FIN   -----------------------------#
 #-------------Creamos las funciones para el master----------------#
 #-----------------------------------------------------------------#
@@ -126,7 +132,9 @@ class ventanaPrincipal(QMainWindow):
     self.extFotos.setText(self.extFotos.text()[:-1])
     for extension in gestionarBD.extensionesFotoVid('video'):
       self.extVideos.setText(self.extVideos.text() + extension + ',')
-    self.extVideos.setText(self.extVideos.text()[:-1])        
+    self.extVideos.setText(self.extVideos.text()[:-1])    
+
+    self.btnBuscarCOri.clicked.connect(self.buscarCarpetaOri)     
 
     self.btnGuardarOri.clicked.connect(self.guardarOri) 
     #Acciones pestaña 2
@@ -147,14 +155,11 @@ class ventanaPrincipal(QMainWindow):
       self.chkHeic.setCheckState(QtCore.Qt.Unchecked)
 
     self.btnGuardarSal.clicked.connect(self.guardarSal)   
+    self.btnBuscarCDes.clicked.connect(self.buscarCarpetaDes)   
     #Acciones pestaña 3
-    self.btnStart.clicked.connect(self.lanzarProceso)   
-
-  
-
-   
-
-        
+    self.btnStart.clicked.connect(self.lanzarProceso) 
+    self.btnVerFotos.clicked.connect(self.verFotos)   
+    self.btnVerFotos.setVisible(False)
 
   def mostrarV1(self):
     self.frameOptEntrada.show()
@@ -168,6 +173,13 @@ class ventanaPrincipal(QMainWindow):
     self.frameOptLanzar.show()
     self.frameOptEntrada.hide()
     self.frameOptSalida.hide()    
+
+  def buscarCarpetaDes(self):
+    dialog = QFileDialog()
+    self.rutaDestino.setText(dialog.getExistingDirectory(self, 'Selecciona un directorio'))
+  def buscarCarpetaOri(self):
+    dialog = QFileDialog()
+    self.rutaOrigen.setText(dialog.getExistingDirectory(self, 'Selecciona un directorio'))        
 
   def mostrarLog(self):
     subprocess.run(["notepad","log/log.txt"])
@@ -194,6 +206,13 @@ class ventanaPrincipal(QMainWindow):
       elValor = 0 
     gestionarBD.guardarDato('OPCIONES_USUARIO','HEIC2JPG',elValor)  
 
+  def verFotos(self):
+    gestionarBD = gestionBD()
+    for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','RUTA_DESTINO'):
+      for ele_rutaD2 in ele_rutaD:
+        path = ele_rutaD2
+    subprocess.Popen(f'explorer {os.path.realpath(path)}')
+
   def lanzarProceso(self):
     gestionarBD = gestionBD()
     gestionarBD.crearBD()
@@ -206,6 +225,7 @@ class ventanaPrincipal(QMainWindow):
     cabeceraLog+= '----------' + now + '------------'
     cabeceraLog+= '--------------------------------------'
     insertarLog(cabeceraLog)
+
 
     gestionarBD = gestionBD()
 
@@ -228,29 +248,37 @@ class ventanaPrincipal(QMainWindow):
         elDestinoR = crearCarpeta(datExif.elMes,datExif.elPueblo)
         #Lanzamos el proceso que copia o mueve los ficheros a la nueva ruta
         textoLog = ''
-        if(tipoMovimiento =='C'): #Copiar
+
+        if(tipoMovimiento =='Copiar'): #Copiar
           try:          
             shutil.copy2(elFicheroCompleto, elDestinoR)
             textoLog = "Fichero {} copiado en carpeta -> {}".format(elemento['nombre'],elDestinoR)
           except Exception as e:
             print('Error en el proceso de copia : '+str(e))
             textoLog = 'Error en el proceso de copia : '+str(e)
-        elif(tipoMovimiento=='M'): # Mover
+        elif(tipoMovimiento=='Mover'): # Mover
           try:         
-            shutil.move(elFicheroCompleto, elDestino, copy_function=copy2)
+            shutil.move(elFicheroCompleto, elDestinoR)
             textoLog = "Fichero {} movido a carpeta -> {}".format(elemento['nombre'],elDestinoR)
           except Exception as e:
             print('Error en el proceso de mover archivo : '+str(e))
             textoLog = 'Error en el proceso de mover archivo : '+str(e)
         #Insertamos en el log el movimiento del fichero
         insertarLog(textoLog)
-        #Convertir ficheros copiados con formato HEIC a Jpg
-        convertirHEIC()
+    #Convertir ficheros copiados con formato HEIC a Jpg
+    for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','HEIC2JPG'):
+      for ele_rutaD2 in ele_rutaD:
+        valHEIC = ele_rutaD2
+    if valHEIC > 0:
+      time.sleep(2)
+      convertirHEIC()
+    self.btnVerFotos.setVisible(True)
    
 #---------------------------   FIN   -----------------------------#
 #-----------------Parte grafica de la pantalla--------------------#
 #-----------------------------------------------------------------#
 
+#C:\Users\Xabi\Documents\ProyectosPython\movil2pc\gui>pyrcc5 -o ../resources.py images/imagenes.qrc
 if __name__ == '__main__':
 
   app = QApplication(sys.argv)
