@@ -100,6 +100,7 @@ class datosExif(object):
 
 	  laFecha = ''
 	  laFecha = str(metadata.get('creation_date'))
+	  parser.close()
 	  self.elMes = datetime.strptime(laFecha[:10], "%Y-%m-%d").strftime('%Y - %B')  
 	  self.elPueblo='Videos'  
 

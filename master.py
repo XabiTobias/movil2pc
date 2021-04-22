@@ -21,6 +21,7 @@ from PyQt5 import uic
 from PyQt5.QtWidgets import QDialog,QMainWindow, QApplication, QMessageBox, QFileDialog, QLabel
 from PyQt5.QtGui import QIcon
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import *
 
 #-----------------------------------------------------------------#
 #-------------Creamos las funciones para el master----------------#
@@ -49,14 +50,21 @@ def convertirHEIC():
         fotoR = os.path.join(dirpath, fotoRe)
         #print("Convirtiendo {} en -> {}".format(fotoOriginal,fotoR))
         #Insertamos en el log el movimiento del fichero
-        textoLog = "Convirtiendo {} en -> {}".format(fotoOriginal,fotoR)
+        textoLog = "Convirtiendo {} con extensión HEIC en -> {}".format(fotoOriginal,fotoR)
         insertarLog(textoLog)
         stream = os.popen('"C:\\Program Files\\ImageMagick-7.0.11-Q16-HDRI\\magick" "' + fotoOriginal + '" "' + fotoR + '"')
         output = stream.read()
+        if os.path.exists(fotoOriginal):
+          try:
+            os.remove(fotoOriginal) # one file at a time
+            textoLog = "Borrado el fichero {}".format(fotoOriginal,)
+          except Exception as e:
+            textoLog = 'Error en el borrado del fichero HEIC : '+str(e)
+          insertarLog(textoLog)
 
 def insertarLog(textoLog):
   file = open("log\\log.txt", "a+")
-  file.write(textoLog + os.linesep)
+  file.write(textoLog + '\n')
   file.close()
          
 #---------------------------   FIN   -----------------------------#
@@ -93,6 +101,7 @@ class ventanaPrincipal(QMainWindow):
     self.frameOptSalida.hide()
     self.frameOptLanzar.hide()
 
+    self.lblAjustesOk.setHidden(True)
 
     '''
     #Acciones menu archivo
@@ -192,6 +201,24 @@ class ventanaPrincipal(QMainWindow):
     gestionarBD.guardarDato('OPCIONES_USUARIO','EXT_VID_ORIGEN',self.extVideos.text())  
     #Ruta
     gestionarBD.guardarDato('RUTAS_ORIGEN','RUTA',self.rutaOrigen.text())  
+    #Mostrar label guardados
+    #self.lblAjustesOk.setGeometry(QRect(160, 190, 251, 71))
+    '''
+    try:
+      timer = QTimer
+      timer.timeout.connect(self.ocultarT)
+      timer.start(1000)
+    except Exception as e:
+      print('Error en el proceso de mover archivo : '+str(e))
+    
+    try:
+      QTimer.singleShot(3000,self.ocultarT())
+    except Exception as e:
+      print('Error en el proceso de mover archivo : '+str(e))
+    #self.lblAjustesOk.setHidden(False)
+    '''
+  def ocultarT(self):
+    self.lblAjustesOk.setHidden(False)
 
   def guardarSal(self):
     gestionarBD = gestionBD()
@@ -257,7 +284,7 @@ class ventanaPrincipal(QMainWindow):
             print('Error en el proceso de copia : '+str(e))
             textoLog = 'Error en el proceso de copia : '+str(e)
         elif(tipoMovimiento=='Mover'): # Mover
-          try:         
+          try:       
             shutil.move(elFicheroCompleto, elDestinoR)
             textoLog = "Fichero {} movido a carpeta -> {}".format(elemento['nombre'],elDestinoR)
           except Exception as e:

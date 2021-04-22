@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>848</width>
-    <height>479</height>
+    <width>869</width>
+    <height>859</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -292,7 +292,7 @@ border-radius: 12px;</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>20</y>
+       <y>60</y>
        <width>300</width>
        <height>20</height>
       </rect>
@@ -306,7 +306,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>50</y>
+       <y>90</y>
        <width>300</width>
        <height>20</height>
       </rect>
@@ -320,7 +320,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>20</y>
+       <y>60</y>
        <width>120</width>
        <height>16</height>
       </rect>
@@ -343,7 +343,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
+       <y>90</y>
        <width>120</width>
        <height>16</height>
       </rect>
@@ -366,7 +366,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>110</y>
+       <y>150</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -389,7 +389,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>110</y>
+       <y>150</y>
        <width>300</width>
        <height>20</height>
       </rect>
@@ -422,7 +422,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>90</y>
+       <y>130</y>
        <width>460</width>
        <height>3</height>
       </rect>
@@ -438,7 +438,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>490</x>
-       <y>110</y>
+       <y>150</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -451,6 +451,62 @@ color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
       <string/>
+     </property>
+    </widget>
+    <widget class="QFrame" name="FrameCabecera_2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>541</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(27, 29, 35, 200);
+border-radius: 8px;</string>
+     </property>
+     <widget class="QLabel" name="titApp_13">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>8</y>
+        <width>250</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;Century Gothic&quot;;
+background:transparent;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#efefef;&quot;&gt;Origen de los datos - Opciones&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QLabel" name="lblAjustesOk">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>190</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">padding:60px;
+background-color: rgb(244, 216, 68,0.8);
+font: 63 italic 10pt &quot;Work Sans SemiBold Italic&quot;;
+border-radius: 12px;</string>
+     </property>
+     <property name="text">
+      <string>Ajustes guardados</string>
      </property>
     </widget>
    </widget>
@@ -477,7 +533,7 @@ border-radius: 12px;</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>20</y>
+       <y>60</y>
        <width>361</width>
        <height>20</height>
       </rect>
@@ -491,7 +547,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>20</y>
+       <y>60</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -514,7 +570,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>90</y>
+       <y>120</y>
        <width>171</width>
        <height>20</height>
       </rect>
@@ -535,7 +591,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>50</y>
+       <y>90</y>
        <width>101</width>
        <height>22</height>
       </rect>
@@ -559,7 +615,7 @@ color: rgb(255, 255, 255);</string>
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
+       <y>90</y>
        <width>140</width>
        <height>16</height>
       </rect>
@@ -614,7 +670,7 @@ color: rgb(44, 49, 60);</string>
      <property name="geometry">
       <rect>
        <x>550</x>
-       <y>20</y>
+       <y>60</y>
        <width>21</width>
        <height>21</height>
       </rect>
@@ -628,6 +684,43 @@ color: rgb(44, 49, 60);</string>
      <property name="text">
       <string/>
      </property>
+    </widget>
+    <widget class="QFrame" name="FrameCabecera_3">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>10</y>
+       <width>541</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(27, 29, 35, 200);
+border-radius: 8px;</string>
+     </property>
+     <widget class="QLabel" name="titApp_14">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>8</y>
+        <width>250</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>250</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 8pt &quot;Century Gothic&quot;;
+background:transparent;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt; font-weight:600; color:#efefef;&quot;&gt;Salida de los datos - Opciones&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QPushButton" name="cabMinimizar">
@@ -750,6 +843,26 @@ QPushButton#btnStart:pressed {
      </property>
      <property name="text">
       <string/>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>10</y>
+       <width>271</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 75 22pt &quot;Segoe Print&quot;;
+color: rgb(26, 43, 99);</string>
+     </property>
+     <property name="text">
+      <string>Lanzar proceso</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
     </widget>
    </widget>

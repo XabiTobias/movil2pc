@@ -2,17 +2,17 @@
     "ficheros": [
         {
             "nombre": "IMG_9554.MOV",
-            "ruta": "C:\\Users\\Xabi\\Documents\\ProyectosPython\\movil2pc\\fotos",
+            "ruta": "C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fotos",
             "extension": ".MOV"
         },
         {
             "nombre": "IMG_9692.HEIC",
-            "ruta": "C:\\Users\\Xabi\\Documents\\ProyectosPython\\movil2pc\\fotos",
+            "ruta": "C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fotos",
             "extension": ".HEIC"
         },
         {
             "nombre": "IMG_9831.HEIC",
-            "ruta": "C:\\Users\\Xabi\\Documents\\ProyectosPython\\movil2pc\\fotos",
+            "ruta": "C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fotos",
             "extension": ".HEIC"
         }
     ]
