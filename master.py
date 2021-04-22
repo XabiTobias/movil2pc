@@ -63,9 +63,12 @@ def convertirHEIC():
           insertarLog(textoLog)
 
 def insertarLog(textoLog):
-  file = open("log\\log.txt", "a+")
-  file.write(textoLog + '\n')
-  file.close()
+  #file = open("log\\log.txt", "a+")
+  #file.write(textoLog + '\n')
+  #file.close()
+
+  with open("log\\log.txt", mode="a", encoding="utf-8") as file:
+   file.write(textoLog + '\n')
          
 #---------------------------   FIN   -----------------------------#
 #-------------Creamos las funciones para el master----------------#
@@ -245,7 +248,7 @@ class ventanaPrincipal(QMainWindow):
     gestionarBD.crearBD()
     gravJson()
     makedirs("log/", exist_ok=True)
-    file = open("log\\log.txt", "w")
+    #file = open("log\\log.txt", "w")
     locale.setlocale(locale.LC_ALL, ("es_ES", "UTF-8"))
     now = str(time.strftime("%c"))
     cabeceraLog= '--------------------------------------'

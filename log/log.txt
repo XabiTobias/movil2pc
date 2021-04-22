@@ -1,8 +1,12 @@
-------------------------------------------------22/04/2021 9:49:54--------------------------------------------------
+------------------------------------------------22/04/2021 14:35:43--------------------------------------------------
 Fichero IMG_9554.MOV copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - enero/Videos
 Fichero IMG_9692.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Basauri
 Fichero IMG_9831.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Bilbao
-Convirtiendo C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Basauri\IMG_9692.HEIC con extensión HEIC en -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Basauri\IMG_9692.jpg
-Borrado el fichero C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Basauri\IMG_9692.HEIC
-Convirtiendo C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Bilbao\IMG_9831.HEIC con extensión HEIC en -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Bilbao\IMG_9831.jpg
-Borrado el fichero C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3\2021 - febrero\Bilbao\IMG_9831.HEIC
+------------------------------------------------22/04/2021 14:37:12--------------------------------------------------
+Fichero IMG_9554.MOV copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - enero/Videos
+Fichero IMG_9692.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Basauri
+Fichero IMG_9831.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Bilbao
+------------------------------------------------22/04/2021 14:37:17--------------------------------------------------
+Fichero IMG_9554.MOV copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - enero/Videos
+Fichero IMG_9692.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Basauri
+Fichero IMG_9831.HEIC copiado en carpeta -> C:/Users/Xabi/Documents/ProyectosPython/movil2pc/fmov3/2021 - febrero/Bilbao
