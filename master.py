@@ -105,6 +105,11 @@ class ventanaPrincipal(QMainWindow):
     self.frameOptLanzar.hide()
 
     self.lblAjustesOk.setHidden(True)
+    self.lblAjustesOk2.setHidden(True)
+
+    self.lbl_processing.setVisible(False)  
+    self.btnStart.setVisible(True)  
+ 
 
     '''
     #Acciones menu archivo
@@ -184,7 +189,7 @@ class ventanaPrincipal(QMainWindow):
   def mostrarV3(self):
     self.frameOptLanzar.show()
     self.frameOptEntrada.hide()
-    self.frameOptSalida.hide()    
+    self.frameOptSalida.hide()  
 
   def buscarCarpetaDes(self):
     dialog = QFileDialog()
@@ -205,6 +210,10 @@ class ventanaPrincipal(QMainWindow):
     #Ruta
     gestionarBD.guardarDato('RUTAS_ORIGEN','RUTA',self.rutaOrigen.text())  
     #Mostrar label guardados
+    self.lblAjustesOk.setVisible(True)
+    self.lblAjustesOk.repaint()    
+    time.sleep(2)
+    self.lblAjustesOk.setVisible(False)
     #self.lblAjustesOk.setGeometry(QRect(160, 190, 251, 71))
     '''
     try:
@@ -236,6 +245,12 @@ class ventanaPrincipal(QMainWindow):
       elValor = 0 
     gestionarBD.guardarDato('OPCIONES_USUARIO','HEIC2JPG',elValor)  
 
+    #Mostrar label guardados
+    self.lblAjustesOk2.setVisible(True)
+    self.lblAjustesOk2.repaint()    
+    time.sleep(2)
+    self.lblAjustesOk2.setVisible(False)
+
   def verFotos(self):
     gestionarBD = gestionBD()
     for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','RUTA_DESTINO'):
@@ -244,6 +259,10 @@ class ventanaPrincipal(QMainWindow):
     subprocess.Popen(f'explorer {os.path.realpath(path)}')
 
   def lanzarProceso(self):
+    self.btnStart.setVisible(False)    
+    self.lbl_processing.setVisible(True)
+    self.lbl_processing.repaint() 
+    
     gestionarBD = gestionBD()
     gestionarBD.crearBD()
     gravJson()
@@ -268,41 +287,49 @@ class ventanaPrincipal(QMainWindow):
     with open('ficherosaTratar.json') as file:
       data = json.load(file)
       for elemento in data['ficheros']:
-        elFicheroCompleto = elemento['ruta'] + '\\' + elemento['nombre']
-        if elemento['extension'].upper() in gestionarBD.extensionesFotoVid('foto'):
-          datExif = datosExif(elFicheroCompleto,'F')
-        elif elemento['extension'].upper() in gestionarBD.extensionesFotoVid('video'):
-          datExif = datosExif(elFicheroCompleto,'V')
+        try:
+          elFicheroCompleto = elemento['ruta'] + '\\' + elemento['nombre']
+          if elemento['extension'].upper() in gestionarBD.extensionesFotoVid('foto'):
+            datExif = datosExif(elFicheroCompleto,'F')
+          elif elemento['extension'].upper() in gestionarBD.extensionesFotoVid('video'):
+            datExif = datosExif(elFicheroCompleto,'V')
 
-        #Creamos la carpeta con formato 2021 - Febrero/ Basauri
-        elDestinoR = crearCarpeta(datExif.elMes,datExif.elPueblo)
-        #Lanzamos el proceso que copia o mueve los ficheros a la nueva ruta
-        textoLog = ''
+          #Creamos la carpeta con formato 2021 - Febrero/ Basauri
+          elDestinoR = crearCarpeta(datExif.elMes,datExif.elPueblo)
+          #Lanzamos el proceso que copia o mueve los ficheros a la nueva ruta
+          textoLog = ''
 
-        if(tipoMovimiento =='Copiar'): #Copiar
-          try:          
-            shutil.copy2(elFicheroCompleto, elDestinoR)
-            textoLog = "Fichero {} copiado en carpeta -> {}".format(elemento['nombre'],elDestinoR)
-          except Exception as e:
-            print('Error en el proceso de copia : '+str(e))
-            textoLog = 'Error en el proceso de copia : '+str(e)
-        elif(tipoMovimiento=='Mover'): # Mover
-          try:       
-            shutil.move(elFicheroCompleto, elDestinoR)
-            textoLog = "Fichero {} movido a carpeta -> {}".format(elemento['nombre'],elDestinoR)
-          except Exception as e:
-            print('Error en el proceso de mover archivo : '+str(e))
-            textoLog = 'Error en el proceso de mover archivo : '+str(e)
-        #Insertamos en el log el movimiento del fichero
-        insertarLog(textoLog)
-    #Convertir ficheros copiados con formato HEIC a Jpg
+          if(tipoMovimiento =='Copiar'): #Copiar
+            try:          
+              shutil.copy2(elFicheroCompleto, elDestinoR)
+              textoLog = "Fichero {} copiado en carpeta -> {}".format(elemento['nombre'],elDestinoR)
+            except Exception as e:
+              print('Error en el proceso de copia : '+str(e))
+              textoLog = 'Error en el proceso de copia : '+str(e)
+          elif(tipoMovimiento=='Mover'): # Mover
+            try:       
+              shutil.move(elFicheroCompleto, elDestinoR)
+              textoLog = "Fichero {} movido a carpeta -> {}".format(elemento['nombre'],elDestinoR)
+            except Exception as e:
+              print('Error en el proceso de mover archivo : '+str(e))
+              textoLog = 'Error en el proceso de mover archivo : '+str(e)
+          #Insertamos en el log el movimiento del fichero
+          insertarLog(textoLog)
+        except Exception as e:
+          print(elFicheroCompleto)
+          print('Error general : '+str(e))
+    #Convertir ficheros copiados con formato HEIC a Jpg    
     for ele_rutaD in gestionarBD.obtenerDato('OPCIONES_USUARIO','HEIC2JPG'):
       for ele_rutaD2 in ele_rutaD:
         valHEIC = ele_rutaD2
     if valHEIC > 0:
-      time.sleep(2)
+      print("Todas las fotos copiadas, pasamos a convertir de HEIC aJPG")
       convertirHEIC()
+    self.lbl_processing.hide()
+    self.btnStart.setVisible(True)
+    self.btnStart.repaint() 
     self.btnVerFotos.setVisible(True)
+    
    
 #---------------------------   FIN   -----------------------------#
 #-----------------Parte grafica de la pantalla--------------------#
@@ -310,7 +337,8 @@ class ventanaPrincipal(QMainWindow):
 
 #C:\Users\Xabi\Documents\ProyectosPython\movil2pc\gui>pyrcc5 -o ../resources.py images/imagenes.qrc
 if __name__ == '__main__':
-
+  gestionarBD = gestionBD()
+  gestionarBD.crearBD()
   app = QApplication(sys.argv)
   gui = ventanaPrincipal()
   gui.show()  

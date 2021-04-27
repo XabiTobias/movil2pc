@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>869</width>
-    <height>859</height>
+    <height>489</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -722,6 +722,25 @@ background:transparent;</string>
       </property>
      </widget>
     </widget>
+    <widget class="QLabel" name="lblAjustesOk2">
+     <property name="geometry">
+      <rect>
+       <x>160</x>
+       <y>190</y>
+       <width>251</width>
+       <height>71</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">padding:60px;
+background-color: rgb(244, 216, 68,0.8);
+font: 63 italic 10pt &quot;Work Sans SemiBold Italic&quot;;
+border-radius: 12px;</string>
+     </property>
+     <property name="text">
+      <string>Ajustes guardados</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QPushButton" name="cabMinimizar">
     <property name="geometry">
@@ -865,10 +884,30 @@ color: rgb(26, 43, 99);</string>
       <set>Qt::AlignHCenter|Qt::AlignTop</set>
      </property>
     </widget>
+    <widget class="QLabel" name="lbl_processing">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>120</y>
+       <width>191</width>
+       <height>151</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">image: url(:/imagenes/working.gif);</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <zorder>lbl_processing</zorder>
+    <zorder>btnStart</zorder>
+    <zorder>btnVerFotos</zorder>
+    <zorder>label</zorder>
    </widget>
-   <zorder>frameOptLanzar</zorder>
    <zorder>frameOptSalida</zorder>
    <zorder>frameOptEntrada</zorder>
+   <zorder>frameOptLanzar</zorder>
    <zorder>FrameCabecera</zorder>
    <zorder>gui_labelp</zorder>
    <zorder>frameOpciones</zorder>

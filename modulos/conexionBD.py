@@ -31,7 +31,7 @@ class gestionBD():
 			HEIC2JPG BOOLEAN)
 			''')			
 
-			self.miCursor.execute("INSERT INTO OPCIONES_USUARIO VALUES('','','','','',0)")
+			self.miCursor.execute("INSERT INTO OPCIONES_USUARIO VALUES('.JPG,.HEIC,.PNG','.MOV,.AVI','','Copiar','',1)")
 
 		#get the count of tables with the name
 		self.miCursor.execute(''' SELECT count(name) FROM sqlite_master WHERE type='table' AND name='RUTAS_ORIGEN' ''')
@@ -46,7 +46,7 @@ class gestionBD():
 			RUTA TEXT)
 			''')
 
-			#self.miCursor.execute("INSERT INTO CONFIG VALUES('','','',0,1,1)")
+			self.miCursor.execute("INSERT INTO RUTAS_ORIGEN VALUES(NULL,'')")
 
 		self.miConexion.commit()
 		self.miConexion.close()

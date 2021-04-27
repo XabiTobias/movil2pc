@@ -15,6 +15,9 @@ class datosExif(object):
 	def __init__(self,elArchivo,tipo):
 	  locale.setlocale(locale.LC_ALL, ("es_ES", "UTF-8"))
 
+	  self.LatGrados= 0
+	  self.LonGrados= 0
+
 	  if tipo == 'F':
 	  	self.datosExifFotos(elArchivo)
 	  elif tipo == 'V':
@@ -79,13 +82,14 @@ class datosExif(object):
 	                  self.LonGrados = int(ValGrados) * -1
 	              self.LonMinutos = int(ValMinutos)
 	              self.LonSegundos = float(ValSegundos)
-
+	          #Indica que el fichero tiene datos EXIF, si no los tiene, lo mandamos a la carpeta de a revisar
+	          tieneExif = 'Si'     
 	      elif tag == 'Image DateTime':
-	          laFecha = ''
-	          laFecha = str(tags[tag])
-	          self.elMes = datetime.strptime(laFecha[:10], "%Y:%m:%d").strftime('%Y - %B')
-	      #Indica que el fichero tiene datos EXIF, si no los tiene, lo mandamos a la carpeta de a revisar
-	      tieneExif = 'Si'
+	        laFecha = ''
+	        laFecha = str(tags[tag])
+	        self.elMes = datetime.strptime(laFecha[:10], "%Y:%m:%d").strftime('%Y - %B')
+	        #Indica que el fichero tiene datos EXIF, si no los tiene, lo mandamos a la carpeta de a revisar
+	        tieneExif = 'Si'
 	  if tieneExif == 'No' or self.LatGrados== 0 or self.LonGrados== 0:
 	    self.elMes='FotosArevisar'
 	    self.elPueblo='Todos'

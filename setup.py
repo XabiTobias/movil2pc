@@ -16,13 +16,13 @@ base = None
 if sys.platform == "win32":
     base = "Win32GUI"
 
-build_exe_options = {"include_files": ["modulos","gui"],
+build_exe_options = {"include_files": ["modulos","gui","ImageMagick.exe"],
                      "includes":['atexit','PyQt5'],
                     }    
 
 #options = {"build_exe": {"includes": "atexit"}"include_files": {"include_files": "modulos/datosEXIF.py,modulos/conexionBD.py,modulos/recogerFicheros.py,gui/master.ui"}}
 
-executables = [Executable("master.py", base=base)]
+executables = [Executable("master.py", icon="favicon.ico",target_name="movil2pc.exe", base=base)]
 '''
 build_exe_options = {"include_files": {"modulos/datosEXIF.py,modulos/conexionBD.py,modulos/recogerFicheros.py,gui/master.ui"}}
 
