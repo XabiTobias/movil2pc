@@ -22,3 +22,10 @@ git push -u origin master -> Con esto hacemos la subida a la nas, al origen marc
 
 #Traernos a local lo del repositorio	
 git pull -> Si hacemos algun cambio en remoto y queremos traerlo a local, esta es la forma
+
+#Creamos un tag del proyecto (version ya distribuible digamos)
+git tag 27-04-2021v1 -m "Primera versión ejectuable del proyecto"
+
+#Con esto lo subimos al repositorio
+git push --tags
+
